@@ -1,7 +1,9 @@
-import 'package:biniyog/src/core/utils/spacing.dart';
-import 'package:biniyog/values/constants.dart';
-import 'package:biniyog/widgets/widgets/text.dart';
 import 'package:flutter/material.dart';
+import 'package:template/src/core/utils/spacing.dart';
+import 'package:template/src/features/home/presentation/pages/list_page.dart';
+import 'package:template/src/features/home/presentation/widgets/tab_view.dart';
+import 'package:template/values/constants.dart';
+import 'package:template/widgets/widgets/text.dart';
 
 class HomePage extends StatelessWidget {
   static const routeName = '/home';
@@ -15,7 +17,7 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white,
           title: AppText(
-            text: Constants.homeTitle,
+            text: Constants.subReddit,
             color: Colors.black,
             fontSize: applySpacing(2),
             fontWeight: FontWeight.w700,
@@ -23,6 +25,25 @@ class HomePage extends StatelessWidget {
           centerTitle: false,
           elevation: 0.2,
         ),
-        body: Container());
+        body: _buildTab());
+  }
+
+  Widget _buildTab() {
+    return const TabView(
+      tabs: [
+        TabData(
+          label: Constants.tabHot,
+          child: ListPage(endpoint: Constants.endpointHot),
+        ),
+        TabData(
+          label: Constants.tabNew,
+          child: ListPage(endpoint: Constants.endpointNew),
+        ),
+        TabData(
+          label: Constants.tabRising,
+          child: ListPage(endpoint: Constants.endpointRising),
+        ),
+      ],
+    );
   }
 }

@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:biniyog/src/core/utils/spacing.dart';
-import 'package:biniyog/src/features/home/presentation/pages/home_page.dart';
-import 'package:biniyog/values/constants.dart';
-import 'package:biniyog/widgets/widgets/text.dart';
+import 'package:template/src/core/utils/spacing.dart';
+import 'package:template/src/features/home/presentation/pages/home_page.dart';
+import 'package:template/values/constants.dart';
+import 'package:template/widgets/widgets/text.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {

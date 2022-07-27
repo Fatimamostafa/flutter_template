@@ -1,7 +1,7 @@
 import 'dart:core';
-import 'package:biniyog/src/core/network/exceptions.dart';
-import 'package:biniyog/values/constants.dart';
 import 'package:dio/dio.dart';
+import 'package:template/src/core/network/exceptions.dart';
+import 'package:template/values/constants.dart';
 
 /// Expose a HTTP client without actually exposing that we're using [Dio]
 /// underneath.
