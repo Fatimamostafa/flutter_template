@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:template/src/core/utils/service_locator.dart';
 import 'package:template/src/core/utils/spacing.dart';
 import 'package:template/src/features/home/data/models/listing.dart';
 import 'package:template/src/features/home/presentation/bloc/listing_bloc.dart';
@@ -45,7 +46,6 @@ class _SubredditListViewState extends State<SubredditListView> {
             _isLoadedAll = true;
           } else if (state is Error) {
             AppWidgets.showSnackBar(state.message);
-            BlocProvider.of<ListingBloc>(context).isFetching = false;
           }
           return;
         },
@@ -54,7 +54,6 @@ class _SubredditListViewState extends State<SubredditListView> {
             return const LoadingIndicator();
           } else if (state is Loaded) {
             _items.addAll(state.listingData.children!.toList());
-            BlocProvider.of<ListingBloc>(context).isFetching = false;
           } else if (state is Error && _items.isEmpty) {
             return EmptyPage(
               endpoint: widget.endpoint,
@@ -67,13 +66,10 @@ class _SubredditListViewState extends State<SubredditListView> {
               ..addListener(() {
                 if (_scrollController.offset ==
                         _scrollController.position.maxScrollExtent &&
-                    !BlocProvider.of<ListingBloc>(context).isFetching &&
                     !_isLoadedAll) {
-                  BlocProvider.of<ListingBloc>(context)
-                    ..isFetching = true
-                    ..add(GetSubredditData(
-                        type: widget.endpoint,
-                        after: _items[_items.length - 1].data!.name));
+                  BlocProvider.of<ListingBloc>(context).add(GetSubredditData(
+                      type: widget.endpoint,
+                      after: _items[_items.length - 1].data!.name));
                 }
               }),
             itemBuilder: (context, index) => Column(

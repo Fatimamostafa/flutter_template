@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:template/src/core/utils/service_locator.dart';
 
 import '../bloc/listing_bloc.dart';
 import '../bloc/listing_event.dart';
@@ -24,8 +25,7 @@ class EmptyPage extends StatelessWidget {
           IconButton(
             onPressed: () {
               BlocProvider.of<ListingBloc>(context)
-                ..isFetching = true
-                ..add(GetSubredditData(type: endpoint));
+                  .add(GetSubredditData(type: endpoint));
             },
             icon: const Icon(Icons.refresh),
           ),

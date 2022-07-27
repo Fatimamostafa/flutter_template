@@ -1,4 +1,3 @@
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/src/features/home/domain/usecases/get_data.dart';
 import 'package:template/src/features/home/presentation/bloc/listing_event.dart';
@@ -7,8 +6,6 @@ import 'package:template/values/constants.dart';
 
 class ListingBloc extends Bloc<ListingEvent, ListingState> {
   final GetDataUseCase getData;
-
-  bool isFetching = false;
 
   ListingBloc({
     required this.getData,
