@@ -1,4 +1,4 @@
-package com.wingsfin.biniyog
+package com.fatima.template
 
 import io.flutter.embedding.android.FlutterActivity
 

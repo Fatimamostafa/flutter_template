@@ -1,14 +1,17 @@
+import 'package:flutter/material.dart';
 import 'package:template/main.dart';
 import 'package:template/values/colors.dart';
 import 'package:template/widgets/widgets/text.dart';
-import 'package:flutter/material.dart';
+
 
 /// This class be will be used for reusable widgets throughout the app
 class AppWidgets {
+
   /// Shows a snackbar with specific [msg] argument
   static void showSnackBar(String? msg, {Color? color}) {
     var currentScaffold = globalScaffoldKey.currentState!;
-    currentScaffold.hideCurrentSnackBar();
+    currentScaffold
+        .hideCurrentSnackBar();
     currentScaffold.showSnackBar(SnackBar(
       backgroundColor: color ?? AppColors.blurple,
       content: AppText(

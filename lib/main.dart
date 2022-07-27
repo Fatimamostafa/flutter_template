@@ -1,12 +1,22 @@
-import 'package:biniyog/src/core/utils/disable_scroll_glow.dart';
-import 'package:biniyog/src/features/home/presentation/pages/home_page.dart';
-import 'package:biniyog/src/features/splash/splash_page.dart';
-import 'package:biniyog/values/colors.dart';
+import 'package:template/src/core/utils/disable_scroll_glow.dart';
+import 'package:template/src/features/home/presentation/pages/home_page.dart';
+import 'package:template/src/features/splash/splash_page.dart';
+import 'package:template/values/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-void main() {
+import 'src/core/utils/service_locator.dart' as di;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await di.init();
+  await _portrait();
   runApp(const MyApp());
+}
+
+/// Locks app in portrait orientation
+Future<void> _portrait() async {
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 }
 
 class MyApp extends StatelessWidget {
@@ -47,7 +57,7 @@ class MyHomePage extends StatelessWidget {
           child: ScaffoldMessenger(key: globalScaffoldKey, child: child!),
         );
       },
-      title: 'Biniyog App',
+      title: 'template App',
       theme: ThemeData(
         fontFamily: 'Lato',
         pageTransitionsTheme: const PageTransitionsTheme(builders: {

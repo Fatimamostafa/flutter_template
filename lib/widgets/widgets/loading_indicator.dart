@@ -1,4 +1,4 @@
-import 'package:biniyog/values/colors.dart';
+import 'package:template/values/colors.dart';
 import 'package:flutter/material.dart';
 
 

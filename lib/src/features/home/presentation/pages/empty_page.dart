@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../bloc/listing_bloc.dart';
+import '../bloc/listing_event.dart';
 
 class EmptyPage extends StatelessWidget {
   final String endpoint;
@@ -18,7 +22,11 @@ class EmptyPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              BlocProvider.of<ListingBloc>(context)
+                ..isFetching = true
+                ..add(GetSubredditData(type: endpoint));
+            },
             icon: const Icon(Icons.refresh),
           ),
           const SizedBox(height: 15),
